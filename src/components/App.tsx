@@ -45,7 +45,8 @@ const App: React.FC = () => {
     setPostCard(() => [
       {
         id: 0,
-        text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci, ullam eligendi rerum expedita alias delectus corporis libero mollitia !",
+        text:
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci, ullam eligendi rerum expedita alias delectus corporis libero mollitia !",
         pic: picURL,
         data: new Date().toLocaleDateString(),
       },
