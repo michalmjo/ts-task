@@ -8,4 +8,10 @@ form {
     padding: 5px 10px;
     font-weight: bold;
     outline: none;
+    margin-left: 10px;
+
+}
+
+.card-city {
+    width: 150px;
 }

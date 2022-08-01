@@ -2,12 +2,13 @@ import React, { useRef, useState } from "react";
 import "../style/newCard.css";
 
 type NewCardProps = {
-  onAddCard: (cardText: string) => void;
+  onAddCard: (cardText: string, city: string) => void;
 };
 
 const NewCard: React.FC<NewCardProps> = ({ onAddCard }) => {
   const textInputRef = useRef<HTMLInputElement>(null);
   const [cardValue, setCardValue] = useState<string>("");
+  const [cityCardValue, setCityCardValue] = useState<string>("");
   const cardSubmitHandler = (e: React.FormEvent) => {
     e.preventDefault();
     if (cardValue.length < 3)
@@ -15,19 +16,35 @@ const NewCard: React.FC<NewCardProps> = ({ onAddCard }) => {
     console.log(cardValue);
     const enteredText = textInputRef.current!.value;
     console.log(enteredText);
-    onAddCard(enteredText);
+    onAddCard(enteredText, cityCardValue);
     setCardValue("");
+    setCityCardValue("");
   };
 
   const handleChangeValue = (e: React.FormEvent) => {
     setCardValue((e.target as HTMLTextAreaElement).value);
   };
 
+  const handleCityValueChange = (e: React.FormEvent) => {
+    setCityCardValue((e.target as HTMLTextAreaElement).value);
+  };
+
   return (
     <>
       <form onSubmit={cardSubmitHandler}>
         <div>
-          <label htmlFor="card-list"></label>
+          <label htmlFor="card-name">Postcard City</label>
+          <input
+            placeholder="Type city..."
+            value={cityCardValue}
+            onChange={handleCityValueChange}
+            className="card-input card-city"
+            type="text"
+            id="card-list"
+            ref={textInputRef}
+          />
+          <br />
+          <label htmlFor="card-list">Postcard msg</label>
           <input
             placeholder="Write something...."
             value={cardValue}

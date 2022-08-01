@@ -13,11 +13,12 @@ const App: React.FC = () => {
   const [popup, setPopup] = useState<Boolean>(false);
   console.log(postCard);
 
-  const cardAddHandler = (text: string) => {
+  const cardAddHandler = (text: string, city: string) => {
     const index = Math.floor(Math.random() * 999);
     setPostCard((prevState) => [
       ...prevState,
       {
+        title: city,
         id: index,
         text: text,
         pic: picURL,
@@ -44,6 +45,7 @@ const App: React.FC = () => {
   useEffect(() => {
     setPostCard(() => [
       {
+        title: "Mont Blanc",
         id: 0,
         text:
           "Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci, ullam eligendi rerum expedita alias delectus corporis libero mollitia !",
@@ -53,13 +55,14 @@ const App: React.FC = () => {
     ]);
   }, []);
 
-  const handleSubmitNewData = (value: string) => {
+  const handleSubmitNewData = (value: string, postcarName: string) => {
     if (!value) return alert("Type something");
     setPopup(false);
 
     setPostCard((prevState) => [
       ...prevState,
       {
+        title: postcarName,
         id: Math.random() * 999,
         text: value,
         pic: picURL,

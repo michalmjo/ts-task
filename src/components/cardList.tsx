@@ -4,7 +4,6 @@ import { cardsInterface } from "./interface";
 
 const CardList: React.FC<cardsInterface> = (props) => {
   const { deletePost, editText } = props;
-  console.log(props);
 
   return (
     <>
@@ -12,6 +11,7 @@ const CardList: React.FC<cardsInterface> = (props) => {
         {props.items.map((card) => (
           <li key={card.id}>
             <h2 className="title">Postcard</h2>
+            <p>{card.title}</p>
             <span className="text">{card.text}</span>
             <button onClick={() => editText(card.id)}>Change Text</button>
             <div className="pic">
